@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>{6ecb83b3-4a7f-4dff-88cd-0468bdfb709b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content">
+      <UniqueIdentifier>{f9440454-8731-4a27-97f5-be079ae47d9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{a8d640e1-ebd6-4fb5-ae4e-cb9e63b1787f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Particles">
+      <UniqueIdentifier>{9ef62751-6af6-46f9-90fe-0f4caea2858a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Procedural">
+      <UniqueIdentifier>{e8bca335-c301-452e-b03b-2b079cae3849}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{ddfb5ff8-9db8-4e4c-8ff9-32d9657c917b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Private">
+      <UniqueIdentifier>{e04da454-4908-47a5-bf2f-8a97bc5fc4a0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Source\Common\Blob.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Common\Blob.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Common\FCommon.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Common\Format.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Common\Observer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Common\Shared.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Content\ColladaLoader.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Content\ColladaObject.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Content\Content.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Content\ContentLoader.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Content\ContentMesh.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Content\ContentObject.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Content\FContent.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Content\File.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Content\File.hpp">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Content\Text.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Input\FInput.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Input\Keyboard.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Input\Keyboard.hpp">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Input\Mouse.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Input\Mouse.hpp">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Scene\Camera.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Scene\Camera.hpp">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Scene\FScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Scene\Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Scene\Scene.hpp">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Scene\SceneObject.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Scene\SceneObjectInfo.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Scene\Script.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Scene\ScriptWriter.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Scene\ScriptWriter.hpp">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Procedural\FProcedural.h">
+      <Filter>Procedural</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Procedural\Procedural.h">
+      <Filter>Procedural</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Particles\FParticles.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Particles\Particles.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Core.h" />
+    <ClInclude Include="..\..\..\Source\Core.hpp" />
+    <ClInclude Include="..\..\..\Source\FUNEngine.h" />
+    <ClInclude Include="..\..\..\Source\FUNEngineInfo.h" />
+    <ClInclude Include="..\..\..\Source\main.h" />
+    <ClInclude Include="..\..\..\Source\PCH.h" />
+    <ClInclude Include="..\..\..\Source\RenderConfig.h" />
+    <ClInclude Include="..\..\..\Source\ThreadPool.h" />
+    <ClInclude Include="..\..\..\Source\ThreadPool.hpp" />
+    <ClInclude Include="..\..\..\Source\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Source\Common\Shared.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Content\ColladaLoader.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Content\Content.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Content\ContentLoader.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Content\ContentMesh.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Content\ContentObject.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Content\File.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Content\Text.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Input\Keyboard.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Input\Mouse.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Scene\Camera.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Scene\Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Scene\SceneObject.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Scene\Script.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Scene\ScriptWriter.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Scene\Private\FScene.cpp">
+      <Filter>Scene\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Procedural\Procedural.cpp">
+      <Filter>Procedural</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Particles\Particles.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Core.cpp" />
+    <ClCompile Include="..\..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\..\Source\PCH.cpp" />
+    <ClCompile Include="..\..\..\Source\ThreadPool.cpp" />
+  </ItemGroup>
+</Project>

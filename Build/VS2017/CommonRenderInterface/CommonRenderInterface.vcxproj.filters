@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\CommonRenderInterface.h" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criContext.h" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criContext.hpp" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criCoreInfo.h" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criDataBuffer.h" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criDataBuffer.hpp" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criDrawBufferInfo.h" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criImageBuffer.h" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criImageBuffer.hpp" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criPipeline.h" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criPipeline.hpp" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criProgram.h" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criProgram.hpp" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criRenderPass.h" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\criRenderPass.hpp" />
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\criCore.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\criCore.hpp">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\criDrawBuffer.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\criDrawBuffer.hpp">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\criTools.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\criTools.hpp">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\imageData.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\vknBatch.h">
+      <Filter>Private\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\vknBatch.hpp">
+      <Filter>Private\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\vknDrawBuffer.h">
+      <Filter>Private\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\vknDrawBuffer.hpp">
+      <Filter>Private\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\vknRecordCmdBufferTask.h">
+      <Filter>Private\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\vknRecordCmdBufferTask.hpp">
+      <Filter>Private\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\vknResourcePool.h">
+      <Filter>Private\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknContext.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknContext.hpp">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknDataBuffer.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknDataBuffer.hpp">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknDevice.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknImageBuffer.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknImagerBuffer.hpp">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknInstance.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknInstance.hpp">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknPipeline.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknPipeline.hpp">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknProgram.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknRenderPass.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknRenderPass.hpp">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\CommonRenderInterface\Vulkan\vulkan.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Math\constants.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Math\graphics.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Math\math.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Math\matrix_3x3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Math\matrix_4x4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Math\Quaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Math\transformation.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Math\vector_2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Math\vector_3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Math\vector_4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\criContext.cpp" />
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\criDataBuffer.cpp" />
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\criImageBuffer.cpp" />
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\criPipeline.cpp" />
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\criProgram.cpp" />
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\criRenderPass.cpp" />
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Private\criCore.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Private\criDrawBuffer.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\cri.cpp">
+      <Filter>Private\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\vknBatch.cpp">
+      <Filter>Private\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\vknDrawBuffer.cpp">
+      <Filter>Private\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\vknRecordCmdBufferTask.cpp">
+      <Filter>Private\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\vknResourcePool.cpp">
+      <Filter>Private\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\Windows\vknContext.win.cpp">
+      <Filter>Private\Vulkan\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Private\Vulkan\Windows\vknInstance.win.cpp">
+      <Filter>Private\Vulkan\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknContext.cpp">
+      <Filter>Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknDataBuffer.cpp">
+      <Filter>Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknDevice.cpp">
+      <Filter>Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknImageBuffer.cpp">
+      <Filter>Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknInstance.cpp">
+      <Filter>Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknPipeline.cpp">
+      <Filter>Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknProgram.cpp">
+      <Filter>Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Vulkan\vknRenderPass.cpp">
+      <Filter>Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Vulkan\vulkan.cpp">
+      <Filter>Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Vulkan\Windows\vknContext.win.cpp">
+      <Filter>Vulkan\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\Vulkan\Windows\vknInstance.win.cpp">
+      <Filter>Vulkan\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\CommonRenderInterface.cpp" />
+    <ClCompile Include="..\..\..\Source\CommonRenderInterface\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Vulkan">
+      <UniqueIdentifier>{ac3d4193-d110-4817-a4e4-cef062bf7fc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private">
+      <UniqueIdentifier>{2ecc616f-08b2-4c4f-8ba5-92a17d4ee632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vulkan\Windows">
+      <UniqueIdentifier>{ee29af15-c9cb-4642-ac17-c9d67290f7da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Vulkan">
+      <UniqueIdentifier>{6f09c1d6-c896-4492-892e-34b1d2d6fbc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Vulkan\Windows">
+      <UniqueIdentifier>{4ae38e65-c1aa-48df-abbf-b63b5e2af27e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{beb9644f-b95e-40b7-87c8-e59c92705150}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

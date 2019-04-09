@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{F8D31577-C440-4940-AE78-843236E3D475}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>FUNEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\Bin\Debug\x86\</OutDir>
+    <IntDir>..\..\Bin\Debug\x86\Intermediate\</IntDir>
+    <TargetExt>.exe</TargetExt>
+    <TargetName>funEngine32d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.dll</TargetExt>
+    <OutDir>..\..\Bin\Debug\x64\</OutDir>
+    <IntDir>..\..\Bin\Debug\x64\Intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <AdditionalOptions>--add /std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\CommonRenderInterface\CommonRenderInterface.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criContext.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criContext.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criCoreInfo.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criDataBuffer.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criDataBuffer.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criDrawBufferInfo.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criImageBuffer.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criImageBuffer.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criPipeline.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criPipeline.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criProgram.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criProgram.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criRenderPass.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\criRenderPass.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\cri.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\criCore.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\criCore.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\criDrawBuffer.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\criDrawBuffer.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\criTools.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\criTools.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\imageData.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\Vulkan\vknBatch.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\Vulkan\vknBatch.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\Vulkan\vknDrawBuffer.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\Vulkan\vknDrawBuffer.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\Vulkan\vknRecordCmdBufferTask.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\Vulkan\vknRecordCmdBufferTask.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Private\Vulkan\vknResourcePool.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknContext.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknContext.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknDataBuffer.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknDataBuffer.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknDevice.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknImageBuffer.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknImagerBuffer.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknInstance.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknInstance.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknPipeline.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknPipeline.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknProgram.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknRenderPass.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vknRenderPass.hpp" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\vulkan.h" />
+    <ClInclude Include="..\..\Source\CommonRenderInterface\Vulkan\VulkanRenderInterface.h" />
+    <ClInclude Include="..\..\Source\Common\Blob.h" />
+    <ClInclude Include="..\..\Source\Common\Blob.hpp" />
+    <ClInclude Include="..\..\Source\Common\FCommon.h" />
+    <ClInclude Include="..\..\Source\Common\Format.h" />
+    <ClInclude Include="..\..\Source\Common\Observer.h" />
+    <ClInclude Include="..\..\Source\Common\Shared.h" />
+    <ClInclude Include="..\..\Source\Content\ColladaLoader.h" />
+    <ClInclude Include="..\..\Source\Content\Content.h" />
+    <ClInclude Include="..\..\Source\Content\ContentMesh.h" />
+    <ClInclude Include="..\..\Source\Content\ContentObject.h" />
+    <ClInclude Include="..\..\Source\Content\FContent.h" />
+    <ClInclude Include="..\..\Source\Content\File.h" />
+    <ClInclude Include="..\..\Source\Content\File.hpp" />
+    <ClInclude Include="..\..\Source\Content\Text.h" />
+    <ClInclude Include="..\..\Source\Core.h" />
+    <ClInclude Include="..\..\Source\Core.hpp" />
+    <ClInclude Include="..\..\Source\FUNEngine.h" />
+    <ClInclude Include="..\..\Source\FUNEngineInfo.h" />
+    <ClInclude Include="..\..\Source\Input\FInput.h" />
+    <ClInclude Include="..\..\Source\Input\Keyboard.h" />
+    <ClInclude Include="..\..\Source\Input\Keyboard.hpp" />
+    <ClInclude Include="..\..\Source\Input\Mouse.h" />
+    <ClInclude Include="..\..\Source\Input\Mouse.hpp" />
+    <ClInclude Include="..\..\Source\main.h" />
+    <ClInclude Include="..\..\Source\Math\constants.h" />
+    <ClInclude Include="..\..\Source\Math\graphics.h" />
+    <ClInclude Include="..\..\Source\Math\math.h" />
+    <ClInclude Include="..\..\Source\Math\matrix_3x3.h" />
+    <ClInclude Include="..\..\Source\Math\matrix_4x4.h" />
+    <ClInclude Include="..\..\Source\Math\Quaternion.h" />
+    <ClInclude Include="..\..\Source\Math\transformation.h" />
+    <ClInclude Include="..\..\Source\Math\vector_2.h" />
+    <ClInclude Include="..\..\Source\Math\vector_3.h" />
+    <ClInclude Include="..\..\Source\Math\vector_4.h" />
+    <ClInclude Include="..\..\Source\Particles\FParticles.h" />
+    <ClInclude Include="..\..\Source\Particles\Particles.h" />
+    <ClInclude Include="..\..\Source\PCH.h" />
+    <ClInclude Include="..\..\Source\Procedural\FProcedural.h" />
+    <ClInclude Include="..\..\Source\Procedural\Procedural.h" />
+    <ClInclude Include="..\..\Source\RenderConfig.h" />
+    <ClInclude Include="..\..\Source\Renderer\Effect.h" />
+    <ClInclude Include="..\..\Source\Renderer\FRenderer.h" />
+    <ClInclude Include="..\..\Source\Renderer\Geometry.h" />
+    <ClInclude Include="..\..\Source\Renderer\Mesh.h" />
+    <ClInclude Include="..\..\Source\Renderer\Renderer.h" />
+    <ClInclude Include="..\..\Source\Renderer\DrawPackage.h" />
+    <ClInclude Include="..\..\Source\Renderer\Technique.h" />
+    <ClInclude Include="..\..\Source\Scene\Camera.h" />
+    <ClInclude Include="..\..\Source\Scene\Camera.hpp" />
+    <ClInclude Include="..\..\Source\Scene\FScene.h" />
+    <ClInclude Include="..\..\Source\Scene\Scene.h" />
+    <ClInclude Include="..\..\Source\Scene\Scene.hpp" />
+    <ClInclude Include="..\..\Source\Scene\SceneObject.h" />
+    <ClInclude Include="..\..\Source\Scene\SceneObjectInfo.h" />
+    <ClInclude Include="..\..\Source\Scene\Script.h" />
+    <ClInclude Include="..\..\Source\Scene\ScriptWriter.h" />
+    <ClInclude Include="..\..\Source\Scene\ScriptWriter.hpp" />
+    <ClInclude Include="..\..\Source\ThreadPool.h" />
+    <ClInclude Include="..\..\Source\ThreadPool.hpp" />
+    <ClInclude Include="..\..\Source\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\CommonRenderInterface\CommonRenderInterface.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\criContext.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\criDataBuffer.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\criImageBuffer.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\criPipeline.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\criProgram.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\criRenderPass.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Private\criCore.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Private\criDrawBuffer.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Private\Vulkan\cri.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Private\Vulkan\vknBatch.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Private\Vulkan\vknDrawBuffer.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Private\Vulkan\vknRecordCmdBufferTask.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Private\Vulkan\vknResourcePool.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\vknContext.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\vknDataBuffer.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\vknDevice.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\vknImageBuffer.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\vknInstance.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\vknPipeline.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\vknProgram.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\vknRenderPass.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\vulkan.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\VulkanRenderInterface.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\Windows\vknContext.win.cpp" />
+    <ClCompile Include="..\..\Source\CommonRenderInterface\Vulkan\Windows\vknInstance.win.cpp" />
+    <ClCompile Include="..\..\Source\Common\Shared.cpp" />
+    <ClCompile Include="..\..\Source\Content\ColladaLoader.cpp" />
+    <ClCompile Include="..\..\Source\Content\Content.cpp" />
+    <ClCompile Include="..\..\Source\Content\ContentMesh.cpp" />
+    <ClCompile Include="..\..\Source\Content\ContentObject.cpp" />
+    <ClCompile Include="..\..\Source\Content\File.cpp" />
+    <ClCompile Include="..\..\Source\Content\Text.cpp" />
+    <ClCompile Include="..\..\Source\Core.cpp" />
+    <ClCompile Include="..\..\Source\Input\Keyboard.cpp" />
+    <ClCompile Include="..\..\Source\Input\Mouse.cpp" />
+    <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\Particles\Particles.cpp" />
+    <ClCompile Include="..\..\Source\PCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Procedural\Procedural.cpp" />
+    <ClCompile Include="..\..\Source\Renderer\Effect.cpp" />
+    <ClCompile Include="..\..\Source\Renderer\Geometry.cpp" />
+    <ClCompile Include="..\..\Source\Renderer\Mesh.cpp" />
+    <ClCompile Include="..\..\Source\Renderer\Renderer.cpp" />
+    <ClCompile Include="..\..\Source\Renderer\DrawPackage.cpp" />
+    <ClCompile Include="..\..\Source\Renderer\Technique.cpp" />
+    <ClCompile Include="..\..\Source\Scene\Camera.cpp" />
+    <ClCompile Include="..\..\Source\Scene\Private\FScene.cpp" />
+    <ClCompile Include="..\..\Source\Scene\Scene.cpp" />
+    <ClCompile Include="..\..\Source\Scene\SceneObject.cpp" />
+    <ClCompile Include="..\..\Source\Scene\Script.cpp" />
+    <ClCompile Include="..\..\Source\Scene\ScriptWriter.cpp" />
+    <ClCompile Include="..\..\Source\ThreadPool.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Source\Renderer\drawPackage.cpp" />
+    <ClCompile Include="..\..\..\Source\Renderer\effect.cpp" />
+    <ClCompile Include="..\..\..\Source\Renderer\geometry.cpp" />
+    <ClCompile Include="..\..\..\Source\Renderer\mesh.cpp" />
+    <ClCompile Include="..\..\..\Source\Renderer\renderer.cpp" />
+    <ClCompile Include="..\..\..\Source\Renderer\technique.cpp" />
+    <ClCompile Include="..\..\..\Source\Renderer\main.cpp" />
+    <ClCompile Include="..\..\..\Source\Renderer\pch.renderer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Source\Renderer\drawPackage.h" />
+    <ClInclude Include="..\..\..\Source\Renderer\effect.h" />
+    <ClInclude Include="..\..\..\Source\Renderer\geometry.h" />
+    <ClInclude Include="..\..\..\Source\Renderer\geometryInfo.h" />
+    <ClInclude Include="..\..\..\Source\Renderer\mesh.h" />
+    <ClInclude Include="..\..\..\Source\Renderer\renderer.h" />
+    <ClInclude Include="..\..\..\Source\Renderer\technique.h" />
+    <ClInclude Include="..\..\..\Source\Renderer\pch.renderer.h" />
+  </ItemGroup>
+</Project>
