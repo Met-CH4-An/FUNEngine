@@ -9,6 +9,8 @@
     <ClCompile Include="..\..\..\Source\Renderer\technique.cpp" />
     <ClCompile Include="..\..\..\Source\Renderer\main.cpp" />
     <ClCompile Include="..\..\..\Source\Renderer\pch.renderer.cpp" />
+    <ClCompile Include="..\..\..\Source\Renderer\techniquePass.cpp" />
+    <ClCompile Include="..\..\..\Source\Renderer\ShaderCollection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Source\Renderer\drawPackage.h" />
@@ -19,5 +21,7 @@
     <ClInclude Include="..\..\..\Source\Renderer\renderer.h" />
     <ClInclude Include="..\..\..\Source\Renderer\technique.h" />
     <ClInclude Include="..\..\..\Source\Renderer\pch.renderer.h" />
+    <ClInclude Include="..\..\..\Source\Renderer\techniquePass.h" />
+    <ClInclude Include="..\..\..\Source\Renderer\ShaderCollection.h" />
   </ItemGroup>
 </Project>

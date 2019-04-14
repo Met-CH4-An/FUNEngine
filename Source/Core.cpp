@@ -78,7 +78,7 @@ namespace FE {
 
 				FE::RENDERER::RENDERER_CREATE_INFO _rendererCI = {};
 				_rendererCI.m_HWnd = _hwnd;
-				_rendererCI.m_Technique = RENDERER::RENDERER_CREATE_INFO::TECHNIQUE::DEFFERED;
+				_rendererCI.m_Technique = RENDERER::RENDERER_CREATE_INFO::TYPE::DEFFERED;
 
 				m_Renderrer = new FE::RENDERER::CRenderer(this);
 				m_Renderrer->create(&_rendererCI);

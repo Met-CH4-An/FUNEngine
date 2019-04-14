@@ -20,12 +20,8 @@ namespace FE {
 
 	namespace CRI {
 
-		using CCRIPipelinePrivate = VulkanRenderInterfaceImpl<VULKAN::CVKPipeline, CCRIPipeline>;
-
 		namespace VULKAN {
-
-			inline VKPipeline cri2vkn_Pipeline(CRIPipeline criPipeilne) { return std::static_pointer_cast<CCRIPipelinePrivate>(criPipeilne)->getImpl(); }
-
+			
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			/*!	\brief Реализация графического конвеера.
 			*/
@@ -94,6 +90,9 @@ namespace FE {
 			}; // class CVKPipeline
 
 		} // namespace VULKAN
+
+		using CCRIPipelinePrivate = VulkanRenderInterfaceImpl<VULKAN::CVKPipeline, CCRIPipeline>;
+		inline VULKAN::VKPipeline cri2vkn_Pipeline(CRIPipeline criPipeilne) { return static_cast<CCRIPipelinePrivate*>(criPipeilne)->getImpl(); }
 
 	} // namespace RENDER
 

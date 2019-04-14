@@ -163,7 +163,7 @@ namespace FE {
 				: m_CI(*createInfo) {
 
 				m_Context = cri2vkn_Context(m_CI.m_Context);
-				m_RenderPass = std::static_pointer_cast<CCRIRenderPassPrivate>(m_CI.m_RenderPass)->getImpl();
+				m_RenderPass = cri2vkn_RenderPass(m_CI.m_RenderPass);
 				m_Pipeline = cri2vkn_Pipeline(m_CI.m_Pipeline);
 				m_Vertices = std::static_pointer_cast<VULKAN::CVKDataBuffer>(m_CI.m_Vertices);
 				m_Indices = std::static_pointer_cast<VULKAN::CVKDataBuffer>(m_CI.m_Indices);

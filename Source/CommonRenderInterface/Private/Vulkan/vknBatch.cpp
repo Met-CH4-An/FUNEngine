@@ -115,7 +115,7 @@ namespace FE {
 				// VKRenderPass
 				// ~~~~~~~~~~~~~~~~
 
-				VKRenderPass _vknRenderPass = std::make_shared<CVKRenderPass>(m_VKNContext);
+				VKRenderPass _vknRenderPass = new CVKRenderPass(m_VKNContext);
 
 				_vknRenderPass->create(criRenderPassCI);
 
@@ -149,7 +149,7 @@ namespace FE {
 				// VKProgram
 				// ~~~~~~~~~~~~~~~~
 
-				VKProgram _vknProgram = std::make_shared<CVKProgram>();
+				VKProgram _vknProgram = new CVKProgram();
 
 				_vknProgram->create(criCreateInfo);
 
@@ -161,7 +161,7 @@ namespace FE {
 
 			VKPipeline  CVKBatch::getPipeline(const CRI_PIPELINE_CI *criCreateInfo) {
 
-				VKPipeline _vknPipeline;
+				VKPipeline _vknPipeline = nullptr;
 				// ~~~~~~~~~~~~~~~~				
 				// VKBatchNode_RenderPass
 				// ~~~~~~~~~~~~~~~~
@@ -188,7 +188,7 @@ namespace FE {
 								// VKPipeline
 								// ~~~~~~~~~~~~~~~~
 
-								_vknPipeline = std::make_shared<CVKPipeline>(m_VKNContext);
+								_vknPipeline = new CVKPipeline(m_VKNContext);
 
 								_vknPipeline->create(criCreateInfo);
 
@@ -215,7 +215,7 @@ namespace FE {
 				// new ImageBuffer
 				// ~~~~~~~~~~~~~~~~
 
-				auto _vknImageBuffer = std::make_shared<CVKImageBuffer>();
+				auto _vknImageBuffer = new CVKImageBuffer();
 
 				// ~~~~~~~~~~~~~~~~
 				// create ImageBuffer

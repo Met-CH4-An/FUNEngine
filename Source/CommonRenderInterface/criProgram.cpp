@@ -29,7 +29,7 @@ namespace FE {
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-		CRIProgram CCRIProgram::create(const CRI_PROGRAM_CREATE_INFO *criCreateInfo) {
+		/*CRIProgram CCRIProgram::create(const CRI_PROGRAM_CREATE_INFO *criCreateInfo) {
 
 			ASSERT_EX(criCreateInfo->isValid(), == , true, "Invalid CRI_PROGRAM_CREATE_INFO.", throw e_cri_program_create_failed());
 
@@ -56,7 +56,7 @@ namespace FE {
 
 			return _criProgramPrivate;
 
-		}
+		}*/
 
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

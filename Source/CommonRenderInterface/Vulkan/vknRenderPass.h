@@ -184,8 +184,8 @@ namespace FE {
 			}; // class CVKRenderPass
 
 			using CCRIRenderPassPrivate = VulkanRenderInterfaceImpl<VULKAN::CVKRenderPass, CCRIRenderPass>;
-			inline VKRenderPass cri2vkn_RenderPass(CRIRenderPass criRenderPass) { return std::static_pointer_cast<CCRIRenderPassPrivate>(criRenderPass)->getImpl(); }
-			inline const VKRenderPass cri2vkn_RenderPassConst(const CRIRenderPass criRenderPass) { return std::static_pointer_cast<CCRIRenderPassPrivate>(criRenderPass)->getImpl(); }
+			inline VKRenderPass cri2vkn_RenderPass(CRIRenderPass criRenderPass) { return static_cast<CCRIRenderPassPrivate*>(criRenderPass)->getImpl(); }
+			inline const VKRenderPass cri2vkn_RenderPassConst(const CRIRenderPass criRenderPass) { return static_cast<const CCRIRenderPassPrivate*>(criRenderPass)->getImpl(); }
 
 		} // namespace VULKAN	
 

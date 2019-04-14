@@ -132,7 +132,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Renderer\renderer.cpp" />
+    <ClCompile Include="..\..\..\Source\Renderer\ShaderCollection.cpp" />
     <ClCompile Include="..\..\..\Source\Renderer\technique.cpp" />
+    <ClCompile Include="..\..\..\Source\Renderer\techniquePass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Source\Renderer\drawPackage.h" />
@@ -142,7 +144,9 @@
     <ClInclude Include="..\..\..\Source\Renderer\mesh.h" />
     <ClInclude Include="..\..\..\Source\Renderer\pch.renderer.h" />
     <ClInclude Include="..\..\..\Source\Renderer\renderer.h" />
+    <ClInclude Include="..\..\..\Source\Renderer\ShaderCollection.h" />
     <ClInclude Include="..\..\..\Source\Renderer\technique.h" />
+    <ClInclude Include="..\..\..\Source\Renderer\techniquePass.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

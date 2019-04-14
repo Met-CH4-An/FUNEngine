@@ -111,7 +111,7 @@ namespace FE {
 			using	VKInstance = CVKInstance*;
 
 			class	CVKContext;
-			using	VKContext = std::shared_ptr<CVKContext>;
+			using	VKContext = CVKContext*;
 			using	VKContextArr = std::vector<VKContext>;
 
 			class	CVKResourcePool;
@@ -131,18 +131,18 @@ namespace FE {
 			using	VK_RENDER_OBJECT_ARR = std::vector<VK_RENDER_OBJECT>;
 
 			class	CVKRenderPass;
-			using	VKRenderPass = std::shared_ptr<CVKRenderPass>;
+			using	VKRenderPass = CVKRenderPass*;
 			using	VKRenderPassArr = std::vector<VKRenderPass>;
 			struct	VK_RENDER_PASS_CREATE_INFO;
 
 			class	CVKPipeline;
-			using	VKPipeline = std::shared_ptr<CVKPipeline>;
+			using	VKPipeline = CVKPipeline*;
 			using	VKPipelineArr = std::vector<VKPipeline>;
 			struct	VK_PIPELINE_CREATE_INFO;
 			using	VK_PIPELINE_CREATE_INFO_ARR = std::vector<VK_PIPELINE_CREATE_INFO>;
 
 			class	CVKProgram;
-			using	VKProgram = std::shared_ptr<CVKProgram>;
+			using	VKProgram = CVKProgram*;
 			using	VKProgramArr = std::vector<VKProgram>;
 			struct	VK_PROGRAM_CREATE_INFO;
 
@@ -153,7 +153,7 @@ namespace FE {
 			using	VK_DATA_BUFFER_CREATE_INFO_ARR = std::vector<VK_DATA_BUFFER_CREATE_INFO>;
 
 			class	CVKImageBuffer;
-			using	VKImageBuffer = std::shared_ptr<CVKImageBuffer>;
+			using	VKImageBuffer = CVKImageBuffer*;
 			using	VKImageBufferArr = std::vector<VKImageBuffer>;
 			struct	VK_IMAGE_BUFFER_CREATE_INFO;
 			using	VK_IMAGE_BUFFER_CREATE_INFO_ARR = std::vector<VK_IMAGE_BUFFER_CREATE_INFO>;

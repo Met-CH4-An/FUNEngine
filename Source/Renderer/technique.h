@@ -26,14 +26,26 @@ namespace FE {
 		/*! \brief
 		*/
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		struct TEXTURE_DESCRIPTION {
+		struct TECHNIQUE_SHADER {
+
+			MESH_ATTRIBUTE_DECLARATION			m_attributeDeclaration;
+		};
+		using TECHNIQUE_SHADER_ARR = std::vector<TECHNIQUE_SHADER>;
+
+
+
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		/*! \brief
+		*/
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		struct TECHNIQUE_TEXTURE {
 
 			uint32_t					m_bind;
 			uint32_t					m_width;
 			uint32_t					m_height;
 			COMMON::FORMAT::TEXTURE		m_format;
 		};
-		using TEXTURE_DESCRIPTION_ARR = std::vector<TEXTURE_DESCRIPTION>;
+		using TECHNIQUE_TEXTURE_ARR = std::vector<TECHNIQUE_TEXTURE>;
 
 
 
@@ -41,12 +53,25 @@ namespace FE {
 		/*! \brief
 		*/
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		struct TECHNIQUE_PASS_DESCRIPTION {
+		struct TECHNIQUE_PASS {
 
+			struct ATTACHMENT {
+
+				enum class TYPE {
+
+					INPUT,
+					OUTPUT
+				};
+
+				uint32_t		m_bind;
+				TYPE			m_type;
+			};
+
+			std::vector<ATTACHMENT>		m_attachmentDescs;
 			std::vector<uint32_t>		m_inputTextureBinds;
 			std::vector<uint32_t>		m_outputTextureBinds;
 		};
-		using TECHNIQUE_PASS_DESCRIPTION_ARR = std::vector<TECHNIQUE_PASS_DESCRIPTION>;
+		using TECHNIQUE_PASS_ARR = std::vector<TECHNIQUE_PASS>;
 
 
 
@@ -54,63 +79,11 @@ namespace FE {
 		/*! \brief
 		*/
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		struct TECHNIQUE_DESCRIPTION {
+		struct TECHNIQUE_CREATE_INFO {
 
-			TEXTURE_DESCRIPTION_ARR				m_textures;
-			TECHNIQUE_PASS_DESCRIPTION_ARR		m_passes;
+			TECHNIQUE_TEXTURE_ARR		m_textureDescs;
+			TECHNIQUE_PASS_ARR			m_passDescs;
 		};
-
-
-
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		/*! \brief
-		*/
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		class CTechniquePass {
-
-		public:
-
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			/*! \brief
-			*/
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			CTechniquePass(Technique technique);
-
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			/*! \brief
-			*/
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			void create(const TECHNIQUE_PASS_DESCRIPTION *createInfo);
-
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			/*! \brief
-			*/
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			bool find(const MESH_CREATE_INFO *meshCreateInfo);
-
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			/*! \brief
-			*/
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			void addPipeline(const CRI::CRIPipeline criPipeline);
-
-		public:
-
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			/*! \brief
-			*/
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			inline const CRI::CRIRenderPass getCRIRenderPass(void) const { return m_criRenderPass; }
-
-		private:
-
-			Technique				m_technique;
-			CRI::CRIRenderPass		m_criRenderPass;
-			CRI::CRIPipelineArr		m_criPipelines;
-
-		}; // class CTechniquePass
-		using TechniquePass = CTechniquePass*;
-		using TechniquePassArr = std::vector<TechniquePass>;
 
 
 
@@ -132,7 +105,7 @@ namespace FE {
 			/*! \brief
 			*/
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			void create(const TECHNIQUE_DESCRIPTION *createInfo);
+			void create(const TECHNIQUE_CREATE_INFO *createInfo);
 
 		public:
 
@@ -146,7 +119,7 @@ namespace FE {
 			/*! \brief
 			*/
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			inline const CRI::CRIImageBufferArr& getCRIImageBuffers(void) const { return m_imageBuffers; }
+			inline const CRI::CRIImageBufferArr& getCRIImageBuffers(void) const { return m_criImageBuffers; }
 
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			/*! \brief
@@ -159,16 +132,24 @@ namespace FE {
 			*/
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			inline const TechniquePass getOutputTechniquePass(void) { return m_outputPass; }
+
+		private:
+
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			/*! \brief
+			*/
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			bool checkInputTexture(const TECHNIQUE_TEXTURE *textureDesc) const;
 			
 		private:
 
 			CRenderer*						m_renderer;
-
+			TECHNIQUE_CREATE_INFO			m_createInfo;
 			TechniquePass					m_inputPass;
 			TechniquePass					m_outputPass;
 			TechniquePassArr				m_passes;
 
-			CRI::CRIImageBufferArr			m_imageBuffers;
+			CRI::CRIImageBufferArr			m_criImageBuffers;
 
 		}; // class CTechnique
 

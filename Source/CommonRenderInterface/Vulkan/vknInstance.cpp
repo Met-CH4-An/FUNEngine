@@ -282,13 +282,13 @@ namespace FE {
 
 					if (m_CreateInfo.m_Type == VK_INSTANCE_CREATE_INFO::TYPE::DEBUG) {
 
-						if (std::strcmp(itSupportExtension.m_VkExtension.extensionName, "vk_LAYER_LUNARG_threading") == 0 ||
-							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "vk_LAYER_LUNARG_draw_state") == 0 ||
-							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "vk_LAYER_LUNARG_image") == 0 ||
-							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "vk_LAYER_LUNARG_mem_tracker") == 0 ||
-							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "vk_LAYER_LUNARG_object_tracker") == 0 ||
-							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "vk_LAYER_LUNARG_param_checker") == 0 ||
-							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "vk_LAYER_LUNARG_swapchain") == 0 ||
+						if (std::strcmp(itSupportExtension.m_VkExtension.extensionName, "VK_LAYER_LUNARG_threading") == 0 ||
+							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "VK_LAYER_LUNARG_draw_state") == 0 ||
+							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "VK_LAYER_LUNARG_image") == 0 ||
+							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "VK_LAYER_LUNARG_mem_tracker") == 0 ||
+							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "VK_LAYER_LUNARG_object_tracker") == 0 ||
+							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "VK_LAYER_LUNARG_param_checker") == 0 ||
+							std::strcmp(itSupportExtension.m_VkExtension.extensionName, "VK_LAYER_LUNARG_swapchain") == 0 ||
 							std::strcmp(itSupportExtension.m_VkExtension.extensionName, VK_EXT_DEBUG_REPORT_EXTENSION_NAME) == 0) {
 
 							itSupportExtension.m_Status = true;
@@ -320,17 +320,17 @@ namespace FE {
 
 					if (m_CreateInfo.m_Type == VK_INSTANCE_CREATE_INFO::TYPE::DEBUG) {
 
-						if (std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_threading") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_parameter_validation") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_device_limits") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_core_validation") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_draw_state") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_image") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_mem_tracker") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_object_tracker") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_param_checker") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_swapchain") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_standard_validation") == 0) {
+						if (std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_threading") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_parameter_validation") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_device_limits") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_core_validation") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_draw_state") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_image") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_mem_tracker") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_object_tracker") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_param_checker") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_swapchain") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_standard_validation") == 0) {
 
 							itSupportLayer.m_Status = true;
 
@@ -497,7 +497,7 @@ namespace FE {
 				const char *msg,
 				void *data)
 			{
-
+				std::cout << msg << "\n";
 				if (flags & VK_DEBUG_REPORT_ERROR_BIT_EXT) {
 
 					std::cout << "DEBUG ERROR:\t" << msg << "\n";

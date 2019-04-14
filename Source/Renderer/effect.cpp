@@ -138,7 +138,7 @@ namespace FE {
 			_criProgramCI.m_VertexCode = _fileVertexSrc->getData();
 			_criProgramCI.m_FragmentCode = _fileFragmentSrc->getData();
 
-			CRI::CRIProgram _criProgram = CRI::CCRIProgram::create(&_criProgramCI);
+			CRI::CRIProgram _criProgram = _criContext->create(&_criProgramCI);
 			
 
 			// ~~~~~~~~~~~~~~~~

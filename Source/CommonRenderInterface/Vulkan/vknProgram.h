@@ -85,10 +85,8 @@ namespace FE {
 		} // namespace VULKAN {
 
 		using CCRIProgramPrivate = VulkanRenderInterfaceImpl<VULKAN::CVKProgram, CCRIProgram>;
-
-		inline VULKAN::VKProgram cri2vkn_Program(CRIProgram criProgram) { return std::static_pointer_cast<CCRIProgramPrivate>(criProgram)->getImpl(); }
-
-		inline VULKAN::VKProgram cri2vkn_Program_const(const CRIProgram criProgram) { return std::static_pointer_cast<const CCRIProgramPrivate>(criProgram)->getImplConst(); }
+		inline VULKAN::VKProgram cri2vkn_Program(CRIProgram criProgram) { return static_cast<CCRIProgramPrivate*>(criProgram)->getImpl(); }
+		inline const VULKAN::VKProgram cri2vkn_Program_const(const CRIProgram criProgram) { return static_cast<CCRIProgramPrivate*>(criProgram)->getImpl(); }
 
 	} // namespace CRI
 

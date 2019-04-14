@@ -60,8 +60,7 @@ namespace FE {
 				m_VKNContext = cri2vkn_Context(createInfo->m_criContext);
 				m_CI = *createInfo;
 				auto _criRenderPass = createInfo->m_RenderPass;
-				auto _criRenderPassImpl = std::static_pointer_cast<CCRIRenderPassPrivate>(createInfo->m_RenderPass);
-				auto _vknRenderPass = _criRenderPassImpl->getImpl();
+				auto _vknRenderPass = cri2vkn_RenderPass(createInfo->m_RenderPass);
 
 				// ~~~~~~~~~~~~~~~~
 				// VkPipelineInputAssemblyStateCreateInfo
@@ -129,7 +128,7 @@ namespace FE {
 				// VkPipelineColorBlendStateCreateInfo
 				// ~~~~~~~~~~~~~~~~
 
-				uint32_t _countColorAttachment = _vknRenderPass->getAttachmentColorRefPerSubpass(_criRenderPassImpl->getIDSubpass());
+				uint32_t _countColorAttachment = _vknRenderPass->getAttachmentColorRefPerSubpass(_criRenderPass->getIDSubpass());
 
 				m_ColorBlendAttachmentCIs.resize(_countColorAttachment);
 
@@ -395,7 +394,7 @@ namespace FE {
 				_pipelineCI.pViewportState = &_viewportStateCI;
 				_pipelineCI.pDepthStencilState = &_depthStencilStateCI;
 				_pipelineCI.pDynamicState = &_dynamicStateCI;
-				_pipelineCI.subpass = _criRenderPassImpl->getIDSubpass();
+				_pipelineCI.subpass = _criRenderPass->getIDSubpass();
 
 				VK_ASSERT_EX(m_VKNContext->vkCreateGraphicsPipelines(m_VKNContext->getDevice(), m_PipelineCache, 1, &_pipelineCI, nullptr, &m_Pipeline), "",);
 

@@ -298,7 +298,7 @@ namespace FE {
 
 			using CCRIContextPrivate = VulkanRenderInterfaceImpl<CVKContext, CCRIContext>;
 
-			inline VKContext cri2vkn_Context(CRIContext criContext) { return std::static_pointer_cast<CCRIContextPrivate>(criContext)->getImpl(); }
+			inline VKContext cri2vkn_Context(CRIContext criContext) { return static_cast<CCRIContextPrivate*>(criContext)->getImpl(); }
 
 		} // namespace VULKAN		
 

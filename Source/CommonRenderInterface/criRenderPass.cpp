@@ -64,36 +64,9 @@ namespace FE {
 		//==============================================================
 		//==============================================================
 
-		CRIRenderPass CCRIRenderPass::create(CRIContext criContext, const CRI_RENDER_PASS_CI *createInfo) {
+		void CCRIRenderPass::create(CRIContext criContext, const CRI_RENDER_PASS_CI *createInfo) {
 
-			ASSERT_EX(createInfo->isValid(), ==, true, "Invalid CRI_RENDER_PASS_CREATE_INFO.", throw e_render_pass_create_failed());
-
-			// ~~~~~~~~~~~~~~~~
-			// get VKContext
-			// ~~~~~~~~~~~~~~~~
-
-			auto _vknContext = VULKAN::cri2vkn_Context(criContext);
-
-			// ~~~~~~~~~~~~~~~~
-			// get VKRenderPass
-			// ~~~~~~~~~~~~~~~~
-
-			uint32_t _idSubpass = 0;
-
-			auto _vknRenderPass = _vknContext->getBatch()->getRenderPass(createInfo, &_idSubpass);
-
-			// ~~~~~~~~~~~~~~~~
-			// new CRIRenderPassPrivate
-			// ~~~~~~~~~~~~~~~~
-
-			auto _criRenderPassPrivate = std::make_shared<VULKAN::CCRIRenderPassPrivate>(_vknRenderPass);
-
-			_criRenderPassPrivate->setIDSubpass(_idSubpass);
-
-			// ~~~~~~~~~~~~~~~~
-
-			return _criRenderPassPrivate;
-
+	
 		}
 
 		//==============================================================

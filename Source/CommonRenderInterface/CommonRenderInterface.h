@@ -162,7 +162,7 @@ namespace FE {
 		struct		CRI_CORE_CREATE_INFO;
 
 		class		CCRIContext;
-		using		CRIContext = std::shared_ptr<CCRIContext>;
+		using		CRIContext = CCRIContext*;
 		using		CRIContextArr = std::vector<CRIContext>;
 		struct		CRI_CONTEXT_CREATE_INFO;
 
@@ -173,20 +173,20 @@ namespace FE {
 		using		CRI_DRAW_BUFFER_CREATE_INFO_ARR = std::vector<CRI_DRAW_BUFFER_CREATE_INFO>;
 
 		class		CCRIRenderPass;
-		using		CRIRenderPass = std::shared_ptr<CCRIRenderPass>;
+		using		CRIRenderPass = CCRIRenderPass*;
 		using		CRIRenderPassArr = std::vector<CRIRenderPass>;
 		struct		CRI_RENDER_PASS_CI;
 		using		CRI_RENDER_PASS_CI_ARR = std::vector<CRI_RENDER_PASS_CI>;
 
 		class		CCRIPipeline;
-		using		CRIPipeline = std::shared_ptr<CCRIPipeline>;
+		using		CRIPipeline = CCRIPipeline*;
 		using		CRIPipelineArr = std::vector<CRIPipeline>;
 		struct		CRI_PIPELINE_CI;
 		using		CRI_PIPELINE_CI_ARR = std::vector<CRI_PIPELINE_CI*>;
 		struct		CRI_PIPELINE_INFO;
 
 		class		CCRIProgram;
-		using		CRIProgram = std::shared_ptr<CCRIProgram>;
+		using		CRIProgram = CCRIProgram*;
 		using		CRIProgramArr = std::vector<CRIProgram>;
 		struct		CRI_PROGRAM_CREATE_INFO;
 
@@ -199,7 +199,7 @@ namespace FE {
 		using		CRI_DATA_BUFFER_UPDATE_INFO_ARR = std::vector<CRI_DATA_BUFFER_UPDATE_INFO>;
 
 		class		CCRIImageBuffer;
-		using		CRIImageBuffer = std::shared_ptr<CCRIImageBuffer>;
+		using		CRIImageBuffer = CCRIImageBuffer*;
 		using		CRIImageBufferArr = std::vector<CRIImageBuffer>;
 		struct		CRI_IMAGE_BUFFER_CREATE_INFO;
 		using		CRI_IMAGE_BUFFER_CREATE_INFO_ARR = std::vector<CRI_IMAGE_BUFFER_CREATE_INFO>;
@@ -263,23 +263,23 @@ namespace FE {
 			/*!	\brief
 			*/
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			VulkanRenderInterfaceImpl(std::shared_ptr<Impl> impl) { m_Impl = impl; }
+			VulkanRenderInterfaceImpl(Impl *impl) { m_Impl = impl; }
 
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			/*!	\brief
 			*/
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			std::shared_ptr<Impl> getImpl(void) const { return m_Impl; }
+			Impl* getImpl(void) const { return m_Impl; }
 
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			/*!	\brief
 			*/
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			const std::shared_ptr<Impl> getImplConst(void) const { return m_Impl; }
+			const Impl* getImplConst(void) const { return m_Impl; }
 
 		private:
 
-			std::shared_ptr<Impl>		m_Impl;
+			Impl*		m_Impl;
 
 		}; // class VulkanRenderInterfaceImpl
 

@@ -19,6 +19,8 @@
 // секция для остального
 ////////////////////////////////////////////////////////////////
 #include "Renderer.h"
+#include "techniquePass.h"
+#include "../CommonRenderInterface/criContext.h"
 #include "../CommonRenderInterface/criRenderPass.h"
 #include "../CommonRenderInterface/criImageBuffer.h"
 
@@ -28,88 +30,7 @@ namespace FE {
 
 	namespace RENDERER {
 
-		//==============================================================
-		//==============================================================
-
-		CTechniquePass::CTechniquePass(Technique technique) {
-
-			m_technique = technique;
-		}
-
-		//==============================================================
-		//==============================================================
-
-		void CTechniquePass::create(const TECHNIQUE_PASS_DESCRIPTION *createInfo) {
-
-			const auto& _criImageBuffers = m_technique->getCRIImageBuffers();
-
-			CRI::CRI_RENDER_PASS_ATTACHMENT_CI_ARR _criRenderPassAttachments;
-
-			for (uint32_t ctInputTexuteBind = 0; ctInputTexuteBind < createInfo->m_inputTextureBinds.size(); ++ctInputTexuteBind) {
-
-				uint32_t _textureBind = createInfo->m_inputTextureBinds[ctInputTexuteBind];
-
-				// ~~~~~~~~~~~~~~~~
-				// cri render pass attachment
-				// ~~~~~~~~~~~~~~~~
-
-				CRI::CRI_RENDER_PASS_ATTACHMENT_CI _criRenderPassAttachmentColor0CI = {};
-				_criRenderPassAttachmentColor0CI.m_Texture = _criImageBuffers[_textureBind];
-				_criRenderPassAttachmentColor0CI.m_Type = CRI::CRI_RENDER_PASS_ATTACHMENT_CI::TYPE::INPUT;
-
-				//
-				_criRenderPassAttachments.push_back(_criRenderPassAttachmentColor0CI);
-
-			}
-
-			for (uint32_t ctOutputTexuteBind = 0; ctOutputTexuteBind < createInfo->m_outputTextureBinds.size(); ++ctOutputTexuteBind) {
-
-				uint32_t _textureBind = createInfo->m_outputTextureBinds[ctOutputTexuteBind];
-
-				// ~~~~~~~~~~~~~~~~
-				// cri render pass attachment
-				// ~~~~~~~~~~~~~~~~
-
-				CRI::CRI_RENDER_PASS_ATTACHMENT_CI _criRenderPassAttachmentColor0CI = {};
-				_criRenderPassAttachmentColor0CI.m_Texture = _criImageBuffers[_textureBind];
-				_criRenderPassAttachmentColor0CI.m_Type = CRI::CRI_RENDER_PASS_ATTACHMENT_CI::TYPE::OUTPUT;
-
-				//
-				_criRenderPassAttachments.push_back(_criRenderPassAttachmentColor0CI);
-
-			}
-
-			// ~~~~~~~~~~~~~~~~
-			// cri pass
-			// ~~~~~~~~~~~~~~~~
-
-			CRI::CRI_RENDER_PASS_CI _criRenderPassCI = {};
-
-			_criRenderPassCI.m_CRIContext = m_technique->getRenderer()->getContext();
-			_criRenderPassCI.m_Present = true;
-			_criRenderPassCI.m_Attachments = _criRenderPassAttachments;
-			_criRenderPassCI.m_ClearValue = vec4(0.0f, 0.0f, 0.0f, 0.0f);
-			_criRenderPassCI.m_Width = 800;
-			_criRenderPassCI.m_Height = 600;
-
-			m_criRenderPass = CRI::CCRIRenderPass::create(m_technique->getRenderer()->getContext(), &_criRenderPassCI);
-		}
-
-		//==============================================================
-		//==============================================================
-
-		bool CTechniquePass::find(const MESH_CREATE_INFO *meshCreateInfo) {
-
-			return false;
-		}
-
-		//==============================================================
-		//==============================================================
-
-		void CTechniquePass::addPipeline(const CRI::CRIPipeline criPipeline) {
-
-			m_criPipelines.push_back(criPipeline);
-		}
+		
 
 		//==============================================================
 		//==============================================================
@@ -122,62 +43,48 @@ namespace FE {
 		//==============================================================
 		//==============================================================
 
-		void CTechnique::create(const TECHNIQUE_DESCRIPTION *createInfo) {
+		void CTechnique::create(const TECHNIQUE_CREATE_INFO *createInfo) {
 			
+			m_createInfo = *createInfo;
+
 			// ~~~~~~~~~~~~~~~~
-			// ищем максимальный bind
+			// максимальный bind
 			// ~~~~~~~~~~~~~~~~
 
 			auto _itMaxBind = std::max_element(	
-				createInfo->m_textures.begin(), 
-				createInfo->m_textures.end(),
-				[](const TEXTURE_DESCRIPTION &lValue, const TEXTURE_DESCRIPTION &rValue){return lValue.m_bind < rValue.m_bind; }
+				createInfo->m_textureDescs.begin(), 
+				createInfo->m_textureDescs.end(),
+				[](const TECHNIQUE_TEXTURE &lValue, const TECHNIQUE_TEXTURE &rValue){return lValue.m_bind < rValue.m_bind; }
 			);
 
-			uint32_t _idMaxBind = std::distance(createInfo->m_textures.begin(), _itMaxBind);
+			uint32_t _idMaxBind = std::distance(createInfo->m_textureDescs.begin(), _itMaxBind);
 
-			uint32_t _maxBind = createInfo->m_textures[_idMaxBind].m_bind;
+			uint32_t _maxBind = createInfo->m_textureDescs[_idMaxBind].m_bind;
 
-			m_imageBuffers.resize(_maxBind + 1);
+			m_criImageBuffers.resize(_maxBind + 1);
 
 			// ~~~~~~~~~~~~~~~~
 			// 
 			// ~~~~~~~~~~~~~~~~
 
-			for (uint32_t ctTexture = 0; ctTexture < createInfo->m_textures.size(); ++ctTexture) {
+			for (uint32_t ctTexture = 0; ctTexture < createInfo->m_textureDescs.size(); ++ctTexture) {
 
-				const auto& _texture = createInfo->m_textures[ctTexture];
+				const auto& _textureDesc = createInfo->m_textureDescs[ctTexture];
 
 				// ~~~~~~~~~~~~~~~~
-				// ищем bind
-				// во всех TECHNIQUE_PASS_DESCRIPTION::m_inputRenderTargetBinds
+				// является ли текстура input
 				// ~~~~~~~~~~~~~~~~
 
-				bool _input = false;
-
-				// TECHNIQUE_DESCRIPTION :: m_techniquePasses
-				for (uint32_t ctTechniquePassDecription = 0; ctTechniquePassDecription < createInfo->m_passes.size(); ++ctTechniquePassDecription) {
-				
-					const auto& _techniquePassDecription = createInfo->m_passes[ctTechniquePassDecription];
-
-					// TECHNIQUE_PASS_DESCRIPTION :: m_inputRenderTargetBinds
-					for (uint32_t ctInputTextureBind = 0; ctInputTextureBind < _techniquePassDecription.m_inputTextureBinds.size(); ++ctInputTextureBind) {
-
-						auto _bind = _techniquePassDecription.m_inputTextureBinds[ctInputTextureBind];
-						
-						if (_texture.m_bind == _bind) _input = true;
-
-					}
-				}
+				bool _input = checkInputTexture(&_textureDesc);
 
 				// ~~~~~~~~~~~~~~~~
 				// CRI::CRI_IMAGE_BUFFER_CREATE_INFO::ATTACHMENT
 				// ~~~~~~~~~~~~~~~~
 
-				auto _imageBufferAttachment = CRI::CRI_IMAGE_BUFFER_CREATE_INFO::ATTACHMENT::UNKNOWN;
+				auto _criImageBufferAttachment = CRI::CRI_IMAGE_BUFFER_CREATE_INFO::ATTACHMENT::UNKNOWN;
 
-				if(_input)	_imageBufferAttachment = CRI::CRI_IMAGE_BUFFER_CREATE_INFO::ATTACHMENT::INPUT;
-				else		_imageBufferAttachment = CRI::CRI_IMAGE_BUFFER_CREATE_INFO::ATTACHMENT::SAMPLED;
+				if(_input)	_criImageBufferAttachment = CRI::CRI_IMAGE_BUFFER_CREATE_INFO::ATTACHMENT::INPUT;
+				else		_criImageBufferAttachment = CRI::CRI_IMAGE_BUFFER_CREATE_INFO::ATTACHMENT::SAMPLED;
 
 				// ~~~~~~~~~~~~~~~~
 				// criImageBuffer
@@ -187,27 +94,31 @@ namespace FE {
 				CRI::CRI_IMAGE_BUFFER_CREATE_INFO _criImageBufferCI = {};
 				_criImageBufferCI.m_CRIContext = m_renderer->getContext();
 				_criImageBufferCI.m_Type = CRI::CRI_IMAGE_BUFFER_CREATE_INFO::TYPE::_2D;
-				_criImageBufferCI.m_Attachment = _imageBufferAttachment;
+				_criImageBufferCI.m_Attachment = _criImageBufferAttachment;
 				_criImageBufferCI.m_Storage = CRI::CRI_IMAGE_BUFFER_CREATE_INFO::STORAGE::DEVICE;
-				_criImageBufferCI.m_Width = _texture.m_width;
-				_criImageBufferCI.m_Height = _texture.m_height;
-				_criImageBufferCI.m_Format = _texture.m_format;
+				_criImageBufferCI.m_Width = _textureDesc.m_width;
+				_criImageBufferCI.m_Height = _textureDesc.m_height;
+				_criImageBufferCI.m_Format = _textureDesc.m_format;
 				_criImageBufferCI.m_MipLevels = 1;
 
-				auto _criImageBuffer = CRI::CCRIImageBuffer::create(&_criImageBufferCI);
+				auto _criImageBuffer = m_renderer->getContext()->create(&_criImageBufferCI);
 
-				m_imageBuffers[_texture.m_bind] = _criImageBuffer;
+				m_criImageBuffers[_textureDesc.m_bind] = _criImageBuffer;
 
 			} // for (uint32_t ctTexture = 0;
 
-			// TECHNIQUE_DESCRIPTION :: m_techniquePasses
-			for (uint32_t ctTechniquePassDecription = 0; ctTechniquePassDecription < createInfo->m_passes.size(); ++ctTechniquePassDecription) {
+			// ~~~~~~~~~~~~~~~~
+			// TechniquePass
+			// ~~~~~~~~~~~~~~~~
 
-				const auto& _techniquePassDecription = createInfo->m_passes[ctTechniquePassDecription];
+			// createInfo :: m_passDescs
+			for (uint32_t ct_techniquePassDesc = 0; ct_techniquePassDesc < createInfo->m_passDescs.size(); ++ct_techniquePassDesc) {
+
+				const auto& _techniquePassDesc = createInfo->m_passDescs[ct_techniquePassDesc];
 
 				TechniquePass _pass = new CTechniquePass(this);
 				
-				_pass->create(&_techniquePassDecription);
+				_pass->create(&_techniquePassDesc);
 
 				m_passes.push_back(_pass);
 			}
@@ -216,6 +127,30 @@ namespace FE {
 			m_outputPass = m_passes[1];
 		}
 		
+		//==============================================================
+		//==============================================================
+		
+		bool CTechnique::checkInputTexture(const TECHNIQUE_TEXTURE *textureDesc) const {
+
+			// m_createInfo :: m_passeDescs
+			for (uint32_t ct_techniquePassDec = 0; ct_techniquePassDec < m_createInfo.m_passDescs.size(); ++ct_techniquePassDec) {
+
+				const auto& _techniquePassDesc = m_createInfo.m_passDescs[ct_techniquePassDec];
+
+				// _techniquePassDesc :: m_attachmentDescs
+				for (uint32_t ct_attachmentDesc = 0; ct_attachmentDesc < _techniquePassDesc.m_attachmentDescs.size(); ++ct_attachmentDesc) {
+
+					auto _attachmentDesc = _techniquePassDesc.m_attachmentDescs[ct_attachmentDesc];
+
+					if (textureDesc->m_bind == _attachmentDesc.m_bind) return true;
+
+				} // for (uint32_t ct_attachmentDesc = 0;
+
+			} // for (uint32_t ct_techniquePassDec = 0;
+
+			return false;
+		}
+
 		//==============================================================
 		//==============================================================
 

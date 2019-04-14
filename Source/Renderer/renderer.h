@@ -40,15 +40,16 @@ namespace FE {
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		struct RENDERER_CREATE_INFO {
 
-			enum class TECHNIQUE {
+			enum class TYPE {
 
 				UNKNOWN,
+				FORWARD,
 				DEFFERED
 			};
 
 			HWND					m_HWnd;
 			FE::CORE::Core			m_Core = nullptr;
-			TECHNIQUE				m_Technique = TECHNIQUE::UNKNOWN;
+			TYPE				m_Technique = TYPE::UNKNOWN;
 
 		}; // struct RENDERER_CREATE_INFO
 
@@ -101,6 +102,11 @@ namespace FE {
 				LAMBERT,
 				WRAP_ARROUBND
 			};
+			enum class TYPE4 {
+				POSITION	= 0x00000001,
+				COLOR		= 0x00000002,
+				NORMAL		= 0x00000004
+			};
 			TYPE0				m_type0;
 			TYPE1				m_type1;
 			TYPE2				m_type2;
@@ -108,6 +114,12 @@ namespace FE {
 			CRI::CRIProgram		m_criProgramm;
 		};
 		using ShaderDescriptionArr = std::vector<CShaderDescription>;
+
+		enum class EFFECT_TYPE {
+
+			BILLBOARD,
+			PN_TRIANGLE
+		};
 
 		//struct CPipelineDescription {
 

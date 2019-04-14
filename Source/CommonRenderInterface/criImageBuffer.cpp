@@ -71,28 +71,10 @@ namespace FE {
 		//==============================================================
 		//==============================================================
 
-		CRIImageBuffer CCRIImageBuffer::create(const CRI_IMAGE_BUFFER_CREATE_INFO *createInfo) {
+		void CCRIImageBuffer::create(const CRI_IMAGE_BUFFER_CREATE_INFO *createInfo) {
 
 			ASSERT_EX(createInfo, != , nullptr, "Invalid CRI_IMAGE_BUFFER_CREATE_INFO.", throw e_image_buffer_create_failed());
 			ASSERT_EX(createInfo->isValid(), == , true, "Invalid CRI_IMAGE_BUFFER_CREATE_INFO.", throw e_image_buffer_create_failed());
-
-			// ~~~~~~~~~~~~~~~~
-			// get VKContext
-			// ~~~~~~~~~~~~~~~~
-
-			auto _vknContext = VULKAN::cri2vkn_Context(createInfo->m_CRIContext);
-
-			// ~~~~~~~~~~~~~~~~
-			// get VKImageBuffer
-			// ~~~~~~~~~~~~~~~~
-
-			auto _vknImageBuffer = _vknContext->getBatch()->getImageBuffer(createInfo);
-
-			// ~~~~~~~~~~~~~~~~
-			// new CRIImageBufferPrivate
-			// ~~~~~~~~~~~~~~~~
-
-			auto _criImageBufferPrivate = std::make_shared<CCRIImageBufferPrivate>(_vknImageBuffer);
 
 			// ~~~~~~~~~~~~~~~~
 			// описание mip уровней
@@ -145,14 +127,9 @@ namespace FE {
 			// ~~~~~~~~~~~~~~~~
 			// ~~~~~~~~~~~~~~~~
 
-			_criImageBufferPrivate->m_CreateInfo = *createInfo;
-			_criImageBufferPrivate->m_Size = _sumSize;
-			_criImageBufferPrivate->m_Mipmaps = _mipmapArr;
-
-			// ~~~~~~~~~~~~~~~~
-			// ~~~~~~~~~~~~~~~~
-
-			return _criImageBufferPrivate;
+			m_CreateInfo = *createInfo;
+			m_Size = _sumSize;
+			m_Mipmaps = _mipmapArr;
 
 		}
 

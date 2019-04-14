@@ -143,14 +143,28 @@ namespace FE {
 			static void create(CRIContext criContext, CRIDataBuffer *criDataBuffer, const CRI_DATA_BUFFER_CREATE_INFO *createInfo = nullptr);
 
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			/*!	\brief Создать объект.
-
-			\param[in] criContext Владеет объектом.
-			\param[out] criImageBuffer Полученный объект.
-			\param[in] createInfo Информация для создания.
+			/*!	\brief
 			*/
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			//static void create(CRIContext criContext, CRIImageBuffer *criImageBuffer, const CRI_IMAGE_BUFFER_CREATE_INFO *createInfo = nullptr);
+			CRIRenderPass create(const CRI_RENDER_PASS_CI *criCreateInfo);
+
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			/*!	\brief
+			*/
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			CRIPipeline create(const CRI_PIPELINE_CI *criCreateInfo);
+
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			/*!	\brief
+			*/
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			CRIProgram create(const CRI_PROGRAM_CREATE_INFO *criCreateInfo);
+
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			/*!	\brief
+			*/
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			CRIImageBuffer create(const CRI_IMAGE_BUFFER_CREATE_INFO *criCreateInfo);
 
 		public:
 

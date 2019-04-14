@@ -552,17 +552,17 @@ namespace FE {
 
 					if (m_CRICreateInfo.m_Type == CRI_CONTEXT_CREATE_INFO::TYPE::DEBUG) {
 
-						if (std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_threading") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_parameter_validation") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_device_limits") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_core_validation") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_draw_state") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_image") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_mem_tracker") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_object_tracker") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_param_checker") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_swapchain") == 0 ||
-							std::strcmp(itSupportLayer.m_VkLayer.layerName, "vk_LAYER_LUNARG_standard_validation") == 0) {
+						if (std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_threading") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_parameter_validation") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_device_limits") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_core_validation") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_draw_state") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_image") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_mem_tracker") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_object_tracker") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_param_checker") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_swapchain") == 0 ||
+							std::strcmp(itSupportLayer.m_VkLayer.layerName, "VK_LAYER_LUNARG_standard_validation") == 0) {
 
 							itSupportLayer.m_Status = true;
 

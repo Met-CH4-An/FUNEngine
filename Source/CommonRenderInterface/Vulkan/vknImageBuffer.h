@@ -20,11 +20,7 @@ namespace FE {
 
 	namespace CRI {
 
-		using CCRIImageBufferPrivate = VulkanRenderInterfaceImpl<VULKAN::CVKImageBuffer, CCRIImageBuffer>;
-
 		namespace VULKAN {
-
-			inline VKImageBuffer cri2vk_ImageBuffer(CRIImageBuffer criImageBuffer) { return std::static_pointer_cast<CCRIImageBufferPrivate>(criImageBuffer)->getImpl(); }
 
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			/*!	\brief
@@ -114,6 +110,9 @@ namespace FE {
 			}; // class CVKImageBuffer
 
 		} // namespace VULKAN
+
+		using CCRIImageBufferPrivate = VulkanRenderInterfaceImpl<VULKAN::CVKImageBuffer, CCRIImageBuffer>;
+		inline VULKAN::VKImageBuffer cri2vk_ImageBuffer(CRIImageBuffer criImageBuffer) { return static_cast<CCRIImageBufferPrivate*>(criImageBuffer)->getImpl(); }
 
 	} // namespace RENDER
 

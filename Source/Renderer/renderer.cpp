@@ -22,6 +22,7 @@
 #include "Effect.h"
 #include "DrawPackage.h"
 #include "Technique.h"
+#include "techniquePass.h"
 
 #include "../CommonRenderInterface/criCoreInfo.h"
 #include "../CommonRenderInterface/criContext.h"
@@ -150,7 +151,7 @@ namespace FE {
 
 		void CRenderer::create(const RENDERER_CREATE_INFO *createInfo) {
 
-			ASSERT_EX(static_cast<int>(createInfo->m_Technique), !=, static_cast<int>(RENDERER_CREATE_INFO::TECHNIQUE::UNKNOWN), "RENDERER_CREATE_INFO is incorrect.", throw e_renderer_create_failed());
+			ASSERT_EX(static_cast<int>(createInfo->m_Technique), !=, static_cast<int>(RENDERER_CREATE_INFO::TYPE::UNKNOWN), "RENDERER_CREATE_INFO is incorrect.", throw e_renderer_create_failed());
 			
 			// ~~~~~~~~~~~~~~~~
 			// загрузка шейдеров
@@ -419,7 +420,7 @@ namespace FE {
 
 		//==============================================================
 		//==============================================================
-		const std::string PATH_SHADERS = "D:/Laboratory/FUNEngine/Data/Shaders/Cache/";
+		const std::string PATH_SHADERS = "D:/Laboratory/FUNEngine/Data/Shaders/sprv/";
 		void CRenderer::createDefferedTechnique() {
 
 			//load("D:/Laboratory/FUNEngine/Data/Shaders/transfer@pcn.vert.spv");
@@ -432,15 +433,15 @@ namespace FE {
 			// ~~~~~~~~~~~~~~~~
 
 			{
-				std::string _vertexSrc = load(PATH_SHADERS + "deffered_1pass@transfer@@@mrt@pcn.vert.spv");
-				std::string _fragmentSrc = load(PATH_SHADERS + "deffered_1pass@transfer@@@mrt@pcn.frag.spv");
+				std::string _vertexSrc = load(PATH_SHADERS + "default@default@default@gBuffer.vert.spv");
+				std::string _fragmentSrc = load(PATH_SHADERS + "default@default@default@gBuffer.frag.spv");
 
 				CRI::CRI_PROGRAM_CREATE_INFO _criProgramCI = {};
 				_criProgramCI.m_criContext = m_Context;
 				_criProgramCI.m_VertexCode = _vertexSrc;
 				_criProgramCI.m_FragmentCode = _fragmentSrc;
 
-				CRI::CRIProgram _criProgram = CRI::CCRIProgram::create(&_criProgramCI);
+				CRI::CRIProgram _criProgram = m_Context->create(&_criProgramCI);
 
 				// ~~~~~~~~~~~~~~~~
 				// ~~~~~~~~~~~~~~~~
@@ -460,15 +461,15 @@ namespace FE {
 			// ~~~~~~~~~~~~~~~~
 
 			{
-				std::string _vertexSrc = load(PATH_SHADERS + "deffered_2pass@quad@@@lambert@p.vert.spv");
-				std::string _fragmentSrc = load(PATH_SHADERS + "deffered_2pass@quad@@@lambert@p.frag.spv");
+				std::string _vertexSrc = load(PATH_SHADERS + "default@default@default@lighting_gBuffer.vert.spv");
+				std::string _fragmentSrc = load(PATH_SHADERS + "default@default@default@lighting_gBuffer.frag.spv");
 
 				CRI::CRI_PROGRAM_CREATE_INFO _criProgramCI = {};
 				_criProgramCI.m_criContext = m_Context;
 				_criProgramCI.m_VertexCode = _vertexSrc;
 				_criProgramCI.m_FragmentCode = _fragmentSrc;
 
-				CRI::CRIProgram _criProgram = CRI::CCRIProgram::create(&_criProgramCI);
+				CRI::CRIProgram _criProgram = m_Context->create(&_criProgramCI);
 
 				// ~~~~~~~~~~~~~~~~
 				// ~~~~~~~~~~~~~~~~
@@ -506,7 +507,7 @@ namespace FE {
 					_criImageBufferCI.m_Format = COMMON::FORMAT::TEXTURE::D32_SFLOAT_S8_UINT;
 				}
 
-				auto _criImageBuffer = CRI::CCRIImageBuffer::create(&_criImageBufferCI);
+				auto _criImageBuffer = m_Context->create(&_criImageBufferCI);
 
 				m_ImageBuffers.push_back(_criImageBuffer);
 			}			
@@ -553,7 +554,7 @@ namespace FE {
 				_criRenderPassCI.m_Width = 800;
 				_criRenderPassCI.m_Height = 600;
 				
-				m_R0 = CRI::CCRIRenderPass::create(m_Context, &_criRenderPassCI);
+				m_R0 = m_Context->create(&_criRenderPassCI);
 
 				//_renderPass->
 				//m_Context->getRenderPass(&_criRenderPassCI, &_renderPass);
@@ -613,7 +614,7 @@ namespace FE {
 			_criRenderPassCI.m_Height = 600;
 			//_criRenderPassCI.m_SubpassDescs = _criRenderSubpassCIs;
 
-			m_R1 = CRI::CCRIRenderPass::create(m_Context, &_criRenderPassCI);
+			m_R1 = m_Context->create(&_criRenderPassCI);
 			//m_Context->getRenderPass(&_criRenderPassCI, &_renderPass);
 			//m_R1 = _renderPass;
 			//RendererPassDescription _rendererPassDescription = {};
@@ -630,35 +631,35 @@ namespace FE {
 			// cri program
 			// ~~~~~~~~~~~~~~~~
 
-			CRI::CRIProgram _criProgram_GBuffer;
-			CRI::CRIProgram _criProgram_Composite;
+			//CRI::CRIProgram _criProgram_GBuffer;
+			//CRI::CRIProgram _criProgram_Composite;
 
 			// mrt
-			{
+			//{
 
-				CRI::CRI_PROGRAM_CREATE_INFO _criProgramCI = {};
-				_criProgramCI.m_criContext = m_Context;
+				//CRI::CRI_PROGRAM_CREATE_INFO _criProgramCI = {};
+				//_criProgramCI.m_criContext = m_Context;
 				//_criProgramCI.m_VertexCode = load("D:/Laboratory/FUNEngine/Data/Shaders/GBufferFill.vert.spv");
-				_criProgramCI.m_VertexCode = load("D:/Laboratory/FUNEngine/Data/Shaders/Cache/deffered_1pass@transfer@@@mrt@pcn.vert.spv");
-				_criProgramCI.m_FragmentCode = load("D:/Laboratory/FUNEngine/Data/Shaders/Cache/deffered_1pass@transfer@@@mrt@pcn.frag.spv");
+				//_criProgramCI.m_VertexCode = load("D:/Laboratory/FUNEngine/Data/Shaders/Cache/deffered_1pass@transfer@@@mrt@pcn.vert.spv");
+				//_criProgramCI.m_FragmentCode = load("D:/Laboratory/FUNEngine/Data/Shaders/Cache/deffered_1pass@transfer@@@mrt@pcn.frag.spv");
 
-				_criProgram_GBuffer = CRI::CCRIProgram::create(&_criProgramCI);
+				//_criProgram_GBuffer = CRI::CCRIProgram::create(&_criProgramCI);
 				
 
-			}
+			//}
 
 			// composite
-			{
+			//{
 
-				CRI::CRI_PROGRAM_CREATE_INFO _criProgramCI = {};
-				_criProgramCI.m_criContext = m_Context;
-				_criProgramCI.m_VertexCode = load("D:/Laboratory/FUNEngine/Data/Shaders/Cache/deffered_2pass@quad@@@lambert@p.vert.spv");
-				_criProgramCI.m_FragmentCode = load("D:/Laboratory/FUNEngine/Data/Shaders/Cache/deffered_2pass@quad@@@lambert@p.frag.spv");
+				//CRI::CRI_PROGRAM_CREATE_INFO _criProgramCI = {};
+				//_criProgramCI.m_criContext = m_Context;
+				//_criProgramCI.m_VertexCode = load("D:/Laboratory/FUNEngine/Data/Shaders/Cache/deffered_2pass@quad@@@lambert@p.vert.spv");
+				//_criProgramCI.m_FragmentCode = load("D:/Laboratory/FUNEngine/Data/Shaders/Cache/deffered_2pass@quad@@@lambert@p.frag.spv");
 
-				_criProgram_Composite = CRI::CCRIProgram::create(&_criProgramCI);
+				//_criProgram_Composite = CRI::CCRIProgram::create(&_criProgramCI);
 				
 
-			}
+			//}
 
 			// ~~~~~~~~~~~~~~~~
 			// cri pipeline
@@ -711,7 +712,7 @@ namespace FE {
 				_criPipelineCI.m_Uniformlayout = { { _criPipeline_UniformBinding0CI } };
 				_criPipelineCI.m_VertexLayout = { { _criPipeline_AttributeBindingPositionCI, _criPipeline_AttributeBindingColorCI, _criPipeline_AttributeBindingNormalCI } };
 
-				m_P0 = CRI::CCRIPipeline::create(&_criPipelineCI);
+				m_P0 = m_Context->create(&_criPipelineCI);
 			}
 
 			// composite pipeline
@@ -761,66 +762,107 @@ namespace FE {
 				_criPipelineCI.m_Uniformlayout = { { _criPipeline_UniformBinding0CI, _criPipeline_UniformBinding1CI, _criPipeline_UniformBinding2CI,} };
 				_criPipelineCI.m_VertexLayout = { { _criPipeline_AttributeBindingPositionCI } };
 
-				m_P1 = CRI::CCRIPipeline::create(&_criPipelineCI);
+				m_P1 = m_Context->create(&_criPipelineCI);
 			}
 
+			TECHNIQUE_CREATE_INFO _defferedTechniqueCI = {};
+
 			// ~~~~~~~~~~~~~~~~
-			// render targets
+			// описание текстур
 			// ~~~~~~~~~~~~~~~~
 
 			// position
-			TEXTURE_DESCRIPTION _positionRenderTargetCI = {};
-			_positionRenderTargetCI.m_bind = 0;
-			_positionRenderTargetCI.m_format = COMMON::FORMAT::TEXTURE::R16G16B16A16_SFLOAT;
-			_positionRenderTargetCI.m_width = 800;
-			_positionRenderTargetCI.m_height = 600;
+			TECHNIQUE_TEXTURE _positionTextureDesc = {};
+			_positionTextureDesc.m_bind = 0;
+			_positionTextureDesc.m_format = COMMON::FORMAT::TEXTURE::R16G16B16A16_SFLOAT;
+			_positionTextureDesc.m_width = 800;
+			_positionTextureDesc.m_height = 600;
 
 			// color
-			TEXTURE_DESCRIPTION _colorRenderTargetCI = {};
-			_colorRenderTargetCI.m_bind = 1;
-			_colorRenderTargetCI.m_format = COMMON::FORMAT::TEXTURE::R16G16B16A16_SFLOAT;
-			_colorRenderTargetCI.m_width = 800;
-			_colorRenderTargetCI.m_height = 600;
+			TECHNIQUE_TEXTURE _colorTextureDesc = {};
+			_colorTextureDesc.m_bind = 1;
+			_colorTextureDesc.m_format = COMMON::FORMAT::TEXTURE::R16G16B16A16_SFLOAT;
+			_colorTextureDesc.m_width = 800;
+			_colorTextureDesc.m_height = 600;
 
 			// normal
-			TEXTURE_DESCRIPTION _normalRenderTargetCI = {};
-			_normalRenderTargetCI.m_bind = 2;
-			_normalRenderTargetCI.m_format = COMMON::FORMAT::TEXTURE::R16G16B16A16_SFLOAT;
-			_normalRenderTargetCI.m_width = 800;
-			_normalRenderTargetCI.m_height = 600;
+			TECHNIQUE_TEXTURE _normalTextureDesc = {};
+			_normalTextureDesc.m_bind = 2;
+			_normalTextureDesc.m_format = COMMON::FORMAT::TEXTURE::R16G16B16A16_SFLOAT;
+			_normalTextureDesc.m_width = 800;
+			_normalTextureDesc.m_height = 600;
 
 			// depth
-			TEXTURE_DESCRIPTION _depthRenderTargetCI = {};
-			_depthRenderTargetCI.m_bind = 3;
-			_depthRenderTargetCI.m_format = COMMON::FORMAT::TEXTURE::D32_SFLOAT_S8_UINT;
-			_depthRenderTargetCI.m_width = 800;
-			_depthRenderTargetCI.m_height = 600;
+			TECHNIQUE_TEXTURE _depthTextureDesc = {};
+			_depthTextureDesc.m_bind = 3;
+			_depthTextureDesc.m_format = COMMON::FORMAT::TEXTURE::D32_SFLOAT_S8_UINT;
+			_depthTextureDesc.m_width = 800;
+			_depthTextureDesc.m_height = 600;
+
+			_defferedTechniqueCI.m_textureDescs = { _positionTextureDesc, _colorTextureDesc, _normalTextureDesc, _depthTextureDesc };
 
 			// ~~~~~~~~~~~~~~~~
-			// technique passes
+			// 1 проход
+			// ~~~~~~~~~~~~~~~~
+			
+			{
+				
+				TECHNIQUE_PASS::ATTACHMENT _positionAttachmentDesc = {};
+				_positionAttachmentDesc.m_bind = _positionTextureDesc.m_bind;
+				_positionAttachmentDesc.m_type = TECHNIQUE_PASS::ATTACHMENT::TYPE::OUTPUT;
+
+				TECHNIQUE_PASS::ATTACHMENT _colorAttachmentDesc = {};
+				_colorAttachmentDesc.m_bind = _colorTextureDesc.m_bind;
+				_colorAttachmentDesc.m_type = TECHNIQUE_PASS::ATTACHMENT::TYPE::OUTPUT;
+
+				TECHNIQUE_PASS::ATTACHMENT _normalAttachmentDesc = {};
+				_normalAttachmentDesc.m_bind = _normalTextureDesc.m_bind;
+				_normalAttachmentDesc.m_type = TECHNIQUE_PASS::ATTACHMENT::TYPE::OUTPUT;
+
+				TECHNIQUE_PASS::ATTACHMENT _depthAttachmentDesc = {};
+				_depthAttachmentDesc.m_bind = _depthTextureDesc.m_bind;
+				_depthAttachmentDesc.m_type = TECHNIQUE_PASS::ATTACHMENT::TYPE::OUTPUT;
+
+				TECHNIQUE_PASS _techniquePassDesc = {};
+				_techniquePassDesc.m_attachmentDescs = { _positionAttachmentDesc, _colorAttachmentDesc, _normalAttachmentDesc, _depthAttachmentDesc };
+				
+				_defferedTechniqueCI.m_passDescs.push_back(_techniquePassDesc);
+			}
+			
+			// ~~~~~~~~~~~~~~~~
+			// 2 проход
 			// ~~~~~~~~~~~~~~~~
 
-			// mrt
-			TECHNIQUE_PASS_DESCRIPTION _mrtTechniquePass = {};
-			_mrtTechniquePass.m_inputTextureBinds = {};
-			_mrtTechniquePass.m_outputTextureBinds = {0, 1, 2, 3};
+			{
+				TECHNIQUE_PASS::ATTACHMENT _positionAttachmentDesc = {};
+				_positionAttachmentDesc.m_bind = _positionTextureDesc.m_bind;
+				_positionAttachmentDesc.m_type = TECHNIQUE_PASS::ATTACHMENT::TYPE::INPUT;
 
-			// composite
-			TECHNIQUE_PASS_DESCRIPTION _compositeTechniquePass = {};
-			_compositeTechniquePass.m_inputTextureBinds = {0, 1, 2};
-			_compositeTechniquePass.m_outputTextureBinds = { 3 };
+				TECHNIQUE_PASS::ATTACHMENT _colorAttachmentDesc = {};
+				_colorAttachmentDesc.m_bind = _colorTextureDesc.m_bind;
+				_colorAttachmentDesc.m_type = TECHNIQUE_PASS::ATTACHMENT::TYPE::INPUT;
+
+				TECHNIQUE_PASS::ATTACHMENT _normalAttachmentDesc = {};
+				_normalAttachmentDesc.m_bind = _normalTextureDesc.m_bind;
+				_normalAttachmentDesc.m_type = TECHNIQUE_PASS::ATTACHMENT::TYPE::INPUT;
+
+				TECHNIQUE_PASS::ATTACHMENT _depthAttachmentDesc = {};
+				_depthAttachmentDesc.m_bind = _depthTextureDesc.m_bind;
+				_depthAttachmentDesc.m_type = TECHNIQUE_PASS::ATTACHMENT::TYPE::OUTPUT;
+
+				TECHNIQUE_PASS _techniquePassDesc = {};
+				_techniquePassDesc.m_attachmentDescs = { _positionAttachmentDesc, _colorAttachmentDesc, _normalAttachmentDesc, _depthAttachmentDesc };
+
+				_defferedTechniqueCI.m_passDescs.push_back(_techniquePassDesc);
+			}
 
 			// ~~~~~~~~~~~~~~~~
 			// technique
 			// ~~~~~~~~~~~~~~~~
 
-			TECHNIQUE_DESCRIPTION _defferedTechnique = {};
-			_defferedTechnique.m_textures = { _positionRenderTargetCI, _colorRenderTargetCI, _normalRenderTargetCI, _depthRenderTargetCI };
-			_defferedTechnique.m_passes = { _mrtTechniquePass, _compositeTechniquePass };
-
 			CTechnique* _technique = new CTechnique(this);
 
-			_technique->create(&_defferedTechnique);
+			_technique->create(&_defferedTechniqueCI);
 
 			auto _ren = _technique->getInputTechniquePass();
 

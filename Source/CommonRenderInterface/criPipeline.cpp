@@ -29,30 +29,11 @@ namespace FE {
 		//==============================================================
 		//==============================================================
 
-		CRIPipeline CCRIPipeline::create(const CRI_PIPELINE_CI *criCreateInfo) {
+		void CCRIPipeline::create(const CRI_PIPELINE_CI *criCreateInfo) {
 
 			//ASSERT_EX(createInfo, != , nullptr, "Invalid CRI_IMAGE_BUFFER_CREATE_INFO.", throw e_image_buffer_create_failed());
 			//ASSERT_EX(createInfo->isValid(), == , true, "Invalid CRI_IMAGE_BUFFER_CREATE_INFO.", throw e_image_buffer_create_failed());
 
-			// ~~~~~~~~~~~~~~~~
-			// get VKContext
-			// ~~~~~~~~~~~~~~~~
-
-			auto _vknContext = VULKAN::cri2vkn_Context(criCreateInfo->m_criContext);
-
-			// ~~~~~~~~~~~~~~~~
-			// get VKPipeline
-			// ~~~~~~~~~~~~~~~~
-
-			auto _vknPipeline = _vknContext->getBatch()->getPipeline(criCreateInfo);
-
-			// ~~~~~~~~~~~~~~~~
-			// new CRIPipelinePrivate
-			// ~~~~~~~~~~~~~~~~
-
-			auto _criPipelinePrivate = std::make_shared<CCRIPipelinePrivate>(_vknPipeline);
-
-			return _criPipelinePrivate;
 		}
 
 		//==============================================================

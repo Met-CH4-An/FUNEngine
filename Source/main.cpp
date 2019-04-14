@@ -392,7 +392,7 @@ public:
 
 int main() {
 
-	/*COORD crd = { 350, 50 };
+	/*COORD crd = { 350, 300 };
 	SMALL_RECT src = { 0, 0, crd.X, crd.Y };
 	SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), crd);
 	SetConsoleWindowInfo(GetStdHandle(STD_OUTPUT_HANDLE), TRUE, &src);*/
@@ -401,7 +401,7 @@ int main() {
 	char Title[1024];
 	GetConsoleTitle(Title, 1024); // Узнаем имя окна
 	hwnd = FindWindow(NULL, Title); // Узнаем hwnd окна
-	MoveWindow(hwnd, 0, 0, 1000, 200, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и */
+	MoveWindow(hwnd, 0, 0, 1000, 1000, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и */
 
 	/*HANDLE out_handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD crd = { 450, 50 };
