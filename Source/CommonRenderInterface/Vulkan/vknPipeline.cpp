@@ -226,14 +226,14 @@ namespace FE {
 				// ~~~~~~~~~~~~~~~~
 
 				// перебираем Layout
-				for (uint32_t ctLayout = 0; ctLayout < createInfo->m_Uniformlayout.size(); ++ctLayout) {
+				for (uint32_t ctUniformDescription = 0; ctUniformDescription < createInfo->m_UniformDescription.size(); ++ctUniformDescription) {
 
 					std::vector<VkDescriptorSetLayoutBinding> _descriptorSetBindings;
 
 					// перебираем LayoutBinding
-					for (uint32_t ctBinding = 0; ctBinding < createInfo->m_Uniformlayout[ctLayout].size(); ++ctBinding) {
+					for (uint32_t ctBinding = 0; ctBinding < createInfo->m_UniformDescription[ctUniformDescription].size(); ++ctBinding) {
 
-						auto &_itBinding = createInfo->m_Uniformlayout[ctLayout][ctBinding];
+						auto &_itBinding = createInfo->m_UniformDescription[ctUniformDescription][ctBinding];
 							
 						// ~~~~~~~~~~~~~~~~
 						// VkDescriptorSetLayoutBinding
@@ -243,16 +243,16 @@ namespace FE {
 						VkDescriptorType _descriptorType = {};
 
 						switch (_itBinding.m_Type) {
-							case CRI_PIPELINE_UNIFORM_LAYOUT::BINDING::TYPE::UNIFORM:		_descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;		break;
-							case CRI_PIPELINE_UNIFORM_LAYOUT::BINDING::TYPE::INPUT:			_descriptorType = VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT;		break;
+							case CRI_PIPELINE_UNIFORM_BINDING::TYPE::UNIFORM:		_descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;		break;
+							case CRI_PIPELINE_UNIFORM_BINDING::TYPE::INPUT:			_descriptorType = VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT;		break;
 						}
 
 						// VkShaderStageFlags
 						VkShaderStageFlags _shaderStage = {};
 
 						switch (_itBinding.m_Stage) {
-							case CRI_PIPELINE_UNIFORM_LAYOUT::BINDING::STAGE::VERTEX:			_shaderStage = VK_SHADER_STAGE_VERTEX_BIT;				break;
-							case CRI_PIPELINE_UNIFORM_LAYOUT::BINDING::STAGE::FRAGMENT:			_shaderStage = VK_SHADER_STAGE_FRAGMENT_BIT;			break;
+							case CRI_PIPELINE_UNIFORM_BINDING::STAGE::VERTEX:			_shaderStage = VK_SHADER_STAGE_VERTEX_BIT;				break;
+							case CRI_PIPELINE_UNIFORM_BINDING::STAGE::FRAGMENT:			_shaderStage = VK_SHADER_STAGE_FRAGMENT_BIT;			break;
 						}
 
 						// VkDescriptorSetLayoutBinding

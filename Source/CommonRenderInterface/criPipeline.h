@@ -129,49 +129,41 @@ namespace FE {
 		/*!	\brief Описание макета юниформ.
 		*/
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		struct CRI_PIPELINE_UNIFORM_LAYOUT {
+		struct CRI_PIPELINE_UNIFORM_BINDING {
 
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			/*!	\brief Описание биндингов внутри макета.
+			/*!	\brief Тип биндинга.
 			*/
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			struct BINDING {
+			enum class TYPE {
 
-				//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				/*!	\brief Тип биндинга.
-				*/
-				//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				enum class TYPE {
+				UNKNOWN = -1,
+				UNIFORM = 0,
+				INPUT = 1
 
-					UNKNOWN = -1,
-					UNIFORM = 0,
-					INPUT = 1
+			}; // enum class TYPE
 
-				}; // enum class TYPE
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			/*!	\brief Тип стадии.
+			*/
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			enum class STAGE {
 
-				//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				/*!	\brief Тип стадии.
-				*/
-				//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				enum class STAGE {
+				UNKNOWN = -1,
+				VERTEX = 0,
+				TES_CONTROL = 1,
+				TES_EVALUATION = 2,
+				GEOMETRY = 3,
+				FRAGMENT = 4
 
-					UNKNOWN = -1,
-					VERTEX = 0,
-					TES_CONTROL = 1,
-					TES_EVALUATION = 2,
-					GEOMETRY = 3,
-					FRAGMENT = 4
+			}; // enum class STAGE
 
-				}; // enum class STAGE
-
-				TYPE	m_Type = TYPE::UNKNOWN;
-				STAGE	m_Stage = STAGE::UNKNOWN;
-
-			}; // struct BINDING
+			TYPE	m_Type = TYPE::UNKNOWN;
+			STAGE	m_Stage = STAGE::UNKNOWN;
 
 		}; // struct PIPELINE_UNIFORM_LAYOUT
-		using CRI_PIPELINE_UNIFORM_BINDING_ARR = std::vector<CRI_PIPELINE_UNIFORM_LAYOUT::BINDING>;
-		using CRI_PIPELINE_UNIFORM_LAYOUT_ARR = std::vector<CRI_PIPELINE_UNIFORM_BINDING_ARR>;
+		using CRI_PIPELINE_UNIFORM_LAYOUT = std::vector<CRI_PIPELINE_UNIFORM_BINDING>;
+		using CRI_PIPELINE_UNIFORM_DESCRIPTION = std::vector<CRI_PIPELINE_UNIFORM_LAYOUT>;
 
 
 
@@ -179,22 +171,14 @@ namespace FE {
 		/*!	\brief Описание макета вершин.
 		*/
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		struct CRI_PIPELINE_VERTEX_LAYOUT {
+		struct CRI_PIPELINE_VERTEX_BINDING {
 
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			/*!	\brief Описание атрибута внутри макета.
-			*/
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			struct ATTRIBUTE {
-
-				COMMON::FORMAT::DATA		m_Format = COMMON::FORMAT::DATA::UNKNOWN;
-				uint32_t					m_Offset = 0;
-
-			}; // struct ATTRIBUTE
+			COMMON::FORMAT::DATA		m_Format = COMMON::FORMAT::DATA::UNKNOWN;
+			uint32_t					m_Offset = 0;
 
 		}; // struct PIPELINE_VERTEX_LAYOUT
-		using CRI_PIPELINE_VERTEX_LAYOUT_ATTRIBUTE_ARR = std::vector<CRI_PIPELINE_VERTEX_LAYOUT::ATTRIBUTE>;
-		using CRI_PIPELINE_VERTEX_LAYOUT_ARR = std::vector<CRI_PIPELINE_VERTEX_LAYOUT_ATTRIBUTE_ARR>;
+		using CRI_PIPELINE_VERTEX_LAYOUT = std::vector<CRI_PIPELINE_VERTEX_BINDING>;
+		using CRI_PIPELINE_VERTEX_DESCRIPTION = std::vector<CRI_PIPELINE_VERTEX_LAYOUT>;
 
 
 
@@ -204,14 +188,14 @@ namespace FE {
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		struct CRI_PIPELINE_CI {
 
-			CRIContext							m_criContext = nullptr;
-			CRIRenderPass						m_RenderPass = nullptr;
-			CRIProgram							m_criProgram = nullptr;
-			CRI_PIPELINE_INPUT_PRIMITIVE		m_InputAssembly;
-			CRI_PIPELINE_RASTERIZATION			m_Rasterization;
-			CRI_PIPELINE_SHADER_ARR				m_Shader;
-			CRI_PIPELINE_UNIFORM_LAYOUT_ARR		m_Uniformlayout;
-			CRI_PIPELINE_VERTEX_LAYOUT_ARR		m_VertexLayout;
+			CRIContext									m_criContext = nullptr;
+			CRIRenderPass								m_RenderPass = nullptr;
+			CRIProgram									m_criProgram = nullptr;
+			CRI_PIPELINE_INPUT_PRIMITIVE				m_InputAssembly;
+			CRI_PIPELINE_RASTERIZATION					m_Rasterization;
+			CRI_PIPELINE_SHADER_ARR						m_Shader;
+			CRI_PIPELINE_UNIFORM_DESCRIPTION			m_UniformDescription;
+			CRI_PIPELINE_VERTEX_DESCRIPTION				m_VertexLayout;
 
 		}; // struct CRI_PIPELINE_CI
 
